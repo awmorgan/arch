@@ -61,6 +61,7 @@ func TestOutput(t *testing.T) {
 		if err != nil {
 			t.Fatalf("read golden file: %v", err)
 		}
+		data = bytes.ReplaceAll(data, []byte("\r\n"), []byte("\n"))
 		for _, entry := range bytes.Split(data, []byte("======")) {
 			parts := bytes.Split(entry, []byte("----"))
 			ytabs := parts[0]
